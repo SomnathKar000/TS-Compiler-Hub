@@ -1,15 +1,16 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import CodeEditor from "./components/CodeEditor";
 import {
   ThemeProvider,
   createTheme,
   CssBaseline,
-  Container,
+  // Container,
 } from "@mui/material";
 import { PaletteMode } from "@mui/material";
 
 function App() {
-  let mode: PaletteMode = "dark";
+  let mode: PaletteMode = "light";
   const theme = createTheme({
     palette: {
       mode: mode,
@@ -19,7 +20,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Navbar />
-      <h3>TS Compiler Project</h3>
+      <CodeEditor />
     </ThemeProvider>
   );
 }
