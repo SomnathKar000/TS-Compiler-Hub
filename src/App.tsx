@@ -10,7 +10,7 @@ import {
 import { PaletteMode } from "@mui/material";
 
 function App() {
-  let mode: PaletteMode = "light";
+  let mode: PaletteMode = "dark";
   const theme = createTheme({
     palette: {
       mode: mode,

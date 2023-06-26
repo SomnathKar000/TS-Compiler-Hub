@@ -9,6 +9,7 @@ const OutputBox = () => {
         rows={25}
         variant="filled"
         defaultValue="Output box:"
+        sx={{ margin: 0, padding: 0 }}
         disabled
       />
     </Box>

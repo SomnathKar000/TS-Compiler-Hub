@@ -5,7 +5,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import Tooltip from "@mui/material/Tooltip";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 export default function ButtonAppBar() {
   return (
@@ -18,16 +22,39 @@ export default function ButtonAppBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <TerminalIcon />
           </IconButton>
           <Typography
             variant="h6"
             component="a"
-            sx={{ flexGrow: 1, color: "inherit", textDecoration: "none" }}
+            sx={{
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 800,
+              color: "#155fa0",
+              textDecoration: "none",
+            }}
           >
-            News
+            TS compiler
           </Typography>
-          <Button>Login</Button>
+          <Tooltip title="Create a new program" sx={{ marginX: 1 }}>
+            <Button size="medium">New</Button>
+          </Tooltip>
+          <Tooltip title="Run your code" sx={{ marginX: 1 }}>
+            <Button
+              size="medium"
+              variant="contained"
+              endIcon={<PlayArrowIcon />}
+              color="error"
+            >
+              Run
+            </Button>
+          </Tooltip>
+          <Tooltip title="Mode change">
+            <IconButton>
+              <LightModeIcon />
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
     </Box>
