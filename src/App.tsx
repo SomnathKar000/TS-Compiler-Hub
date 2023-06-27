@@ -1,16 +1,13 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import CodeEditor from "./components/CodeEditor";
-import {
-  ThemeProvider,
-  createTheme,
-  CssBaseline,
-  // Container,
-} from "@mui/material";
-import { PaletteMode } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+
+import { useCodeContext } from "./contexts/code-context";
 
 function App() {
-  let mode: PaletteMode = "dark";
+  const { mode } = useCodeContext();
+
   const theme = createTheme({
     palette: {
       mode: mode,

@@ -8,10 +8,12 @@ import IconButton from "@mui/material/IconButton";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Tooltip from "@mui/material/Tooltip";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-// import DarkModeIcon from "@mui/icons-material/DarkMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { useCodeContext } from "../contexts/code-context";
 
 export default function ButtonAppBar() {
+  const { changeMode, mode } = useCodeContext();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -50,9 +52,9 @@ export default function ButtonAppBar() {
               Run
             </Button>
           </Tooltip>
-          <Tooltip title="Mode change">
-            <IconButton>
-              <LightModeIcon />
+          <Tooltip title={`Enable ${mode === "dark" ? "light" : "dark"} mode`}>
+            <IconButton onClick={changeMode}>
+              {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
             </IconButton>
           </Tooltip>
         </Toolbar>
