@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Tooltip from "@mui/material/Tooltip";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+// import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
 export default function ButtonAppBar() {
@@ -22,7 +22,7 @@ export default function ButtonAppBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <TerminalIcon />
+            <TerminalIcon sx={{ color: "#155fa0" }} />
           </IconButton>
           <Typography
             variant="h6"

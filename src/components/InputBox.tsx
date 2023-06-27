@@ -17,8 +17,17 @@ const InputBox = () => {
   }, []);
 
   return (
-    <Box flex={3} sx={{ display: "flex", overflowY: "auto", height: "38rem" }}>
+    <Box
+      flex={3}
+      sx={{
+        display: "flex",
+        overflowY: "auto",
+        height: "38rem",
+        border: 1,
+      }}
+    >
       <Box
+        id="line-number-box"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -29,11 +38,20 @@ const InputBox = () => {
         }}
       >
         {Array.from({ length: totalLines }, (_, index) => (
-          <Typography component="span" sx={{ margin: 0 }} key={index}>
+          <Typography
+            component="span"
+            sx={{
+              margin: 0,
+              fontWeight: 500,
+              fontSize: "0.9589rem",
+            }}
+            key={index}
+          >
             {index + 1}
           </Typography>
         ))}
       </Box>
+
       <TextField
         inputRef={textFieldRef}
         fullWidth
@@ -41,19 +59,22 @@ const InputBox = () => {
         rows={totalLines}
         size="small"
         variant="outlined"
+        placeholder="Enter your code"
         defaultValue={`console.log("Hello world");`}
-        sx={{ border: "none" }}
+        sx={{
+          border: "none",
+          fontWeight: "bold",
+          "& .MuiOutlinedInput-root": {
+            border: "none",
+          },
+          "& .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+        }}
         onInput={() => {
           const textField = textFieldRef.current;
           const lineCount = textField?.value.split("\n").length;
           setTotalLines(lineCount!);
-        }}
-        onScroll={() => {
-          const textField = textFieldRef.current;
-          const lineNumberBox = document.getElementById("line-number-box");
-          if (textField && lineNumberBox) {
-            lineNumberBox.scrollTop = textField.scrollTop;
-          }
         }}
       />
     </Box>
