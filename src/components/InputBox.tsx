@@ -1,9 +1,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Box, TextField, Typography } from "@mui/material";
+import { useCodeContext } from "../contexts/code-context";
 
 const InputBox = () => {
+  const { code, codeChange } = useCodeContext();
   let textFieldRef = useRef<HTMLTextAreaElement>(null);
   const [totalLines, setTotalLines] = useState(25);
+  const onChange = () => {
+    if (textFieldRef.current) {
+      codeChange(textFieldRef.current.value);
+    }
+  };
+
   useEffect(() => {
     const calculateTotalLines = () => {
       if (textFieldRef.current) {
@@ -24,6 +32,12 @@ const InputBox = () => {
         overflowY: "auto",
         height: "38rem",
         border: 1,
+        cursor: "text",
+      }}
+      onClick={() => {
+        if (textFieldRef.current) {
+          textFieldRef.current.focus();
+        }
       }}
     >
       <Box
@@ -56,12 +70,15 @@ const InputBox = () => {
         inputRef={textFieldRef}
         fullWidth
         multiline
+        onChange={onChange}
+        value={code}
+        name="code"
         rows={totalLines}
         size="small"
         variant="outlined"
         placeholder="Enter your code"
-        defaultValue={`console.log("Hello world");`}
         sx={{
+          height: "100%",
           border: "none",
           fontWeight: "bold",
           "& .MuiOutlinedInput-root": {

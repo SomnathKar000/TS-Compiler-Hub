@@ -13,7 +13,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { useCodeContext } from "../contexts/code-context";
 
 export default function ButtonAppBar() {
-  const { changeMode, mode } = useCodeContext();
+  const { changeMode, mode, loading, codeCompute } = useCodeContext();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -48,6 +48,8 @@ export default function ButtonAppBar() {
               variant="contained"
               endIcon={<PlayArrowIcon />}
               color="error"
+              onClick={codeCompute}
+              disabled={loading}
             >
               Run
             </Button>
