@@ -46,6 +46,13 @@ const codeReducer = (state: codeState, action: codeAction): codeState => {
     return { ...state, code: code };
   }
 
+  if (action.type === "NEW_PROGRAM") {
+    const code: string = `console.log("Hello world");`;
+    const output: string = "Hello world";
+    const computeTime: string = " 0.004531";
+    return { ...state, code: code, output: output, computeTime: computeTime };
+  }
+
   return { ...state };
 };
 

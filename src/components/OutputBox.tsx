@@ -10,7 +10,7 @@ const OutputBox = () => {
       <Paper sx={{ height: "38rem", padding: 2 }}>
         <Typography variant="h6">Output Box:</Typography>
         <Typography variant="body1" sx={{ marginBottom: 2 }}>
-          Compute Time: {computeTime}s
+          Execution Time: {computeTime}s
         </Typography>
         {loading ? (
           <Typography variant="body2">Running the code...</Typography>

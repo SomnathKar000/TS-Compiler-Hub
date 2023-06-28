@@ -13,7 +13,8 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { useCodeContext } from "../contexts/code-context";
 
 export default function ButtonAppBar() {
-  const { changeMode, mode, loading, codeCompute } = useCodeContext();
+  const { changeMode, mode, loading, codeCompute, createNewProgram } =
+    useCodeContext();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -40,7 +41,9 @@ export default function ButtonAppBar() {
             TS compiler
           </Typography>
           <Tooltip title="Create a new program" sx={{ marginX: 1 }}>
-            <Button size="medium">New</Button>
+            <Button size="medium" onClick={createNewProgram}>
+              New
+            </Button>
           </Tooltip>
           <Tooltip title="Run your code" sx={{ marginX: 1 }}>
             <Button

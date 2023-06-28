@@ -5,6 +5,7 @@ interface codeContextProps extends codeState {
   changeMode: () => void;
   codeCompute: () => void;
   codeChange: (code: string) => void;
+  createNewProgram: () => void;
 }
 
 const codeContext = createContext<codeContextProps | null>(null);
@@ -13,9 +14,9 @@ const initialState: codeState = {
   code: `console.log("Hello world");`,
   error: false,
   errorMessage: "",
-  output: "",
-  computeTime: "",
-  startTime: 0,
+  output: "Hello world",
+  computeTime: " 0.004531",
+  startTime: 0.0,
   loading: false,
   mode: "dark",
 };
@@ -47,9 +48,20 @@ export const CodeContextProvider = ({
     dispatch(payload);
   };
 
+  const createNewProgram = () => {
+    const payload: codeAction = { type: "NEW_PROGRAM", payload: {} };
+    dispatch(payload);
+  };
+
   return (
     <codeContext.Provider
-      value={{ ...state, changeMode, codeCompute, codeChange }}
+      value={{
+        ...state,
+        changeMode,
+        codeCompute,
+        codeChange,
+        createNewProgram,
+      }}
     >
       {children}
     </codeContext.Provider>

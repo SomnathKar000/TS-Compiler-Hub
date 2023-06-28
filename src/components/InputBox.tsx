@@ -72,13 +72,11 @@ const InputBox = () => {
         multiline
         onChange={onChange}
         value={code}
-        name="code"
         rows={totalLines}
         size="small"
         variant="outlined"
         placeholder="Enter your code"
         sx={{
-          height: "100%",
           border: "none",
           fontWeight: "bold",
           "& .MuiOutlinedInput-root": {
