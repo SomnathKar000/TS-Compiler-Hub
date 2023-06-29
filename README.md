@@ -12,18 +12,17 @@ TS Compiler Hub is an online TypeScript compiler and playground built with React
 - Error handling for compilation and runtime errors.
 - Dark mode support for better viewing experience.
 
+## Demo
+
+Check out the live demo of the website: [TS Compiler Hub](https://ts-compiler-hub-somnath000.vercel.app)
+
 ## Installation
 
-1. Clone the repository:
+1. Clone the repository: `git clone https://github.com/your-username/ts-compiler-hub.git`
 
-`git clone https://github.com/your-username/ts-compiler-hub.git`
+2. Navigate to the project directory: `cd ts-compiler-hub`
 
-2. Navigate to the project directory:
-
-`cd ts-compiler-hub`
-
-3. Install the dependencies:
-   `npm install`
+3. Install the dependencies: `npm install`
 
 ## Usage
 
