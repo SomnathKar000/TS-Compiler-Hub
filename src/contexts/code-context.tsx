@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import codeReducer, { codeState, codeAction } from "../reducers/code-reducer";
+import * as ts from "typescript";
 
 interface codeContextProps extends codeState {
   changeMode: () => void;
@@ -14,8 +15,8 @@ const initialState: codeState = {
   code: `console.log("Hello world");`,
   error: false,
   errorMessage: "",
-  output: "Hello world",
-  computeTime: " 0.004531",
+  output: "Click on RUN button to see the output",
+  computeTime: "",
   startTime: 0.0,
   loading: false,
   mode: "dark",
@@ -38,9 +39,41 @@ export const CodeContextProvider = ({
   };
 
   const codeCompute = () => {
+    const logs: string[] = [];
+
+    const originalLog = console.log;
+    console.log = (...args: any[]) => {
+      logs.push(args.map((arg) => String(arg)).join(" "));
+    };
+
     startTime();
-    const payload: codeAction = { type: "CODE_COMPUTE", payload: {} };
-    dispatch(payload);
+    try {
+      const transpiledCode = ts.transpileModule(state.code, {
+        compilerOptions: { module: ts.ModuleKind.CommonJS },
+      });
+
+      const jsCode = transpiledCode.outputText.replace(
+        /^["']use strict["'];\s*/,
+        ""
+      );
+
+      const codeFunction = new Function(jsCode);
+      codeFunction();
+
+      const payload: codeAction = {
+        type: "CODE_COMPUTE",
+        payload: logs,
+      };
+      dispatch(payload);
+    } catch (error) {
+      const payload: codeAction = {
+        type: "CODE_COMPUTE",
+        payload: logs,
+      };
+      dispatch(payload);
+    } finally {
+      console.log = originalLog;
+    }
   };
 
   const codeChange = (code: string) => {

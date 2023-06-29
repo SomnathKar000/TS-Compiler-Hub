@@ -25,14 +25,13 @@ const codeReducer = (state: codeState, action: codeAction): codeState => {
   }
 
   if (action.type === "CODE_COMPUTE") {
-    const code: string = state.code;
-    const output: string = `${code}`;
+    const output: string = action.payload;
     const endTime: number = Date.now();
     return {
       ...state,
       output: output,
       loading: false,
-      computeTime: ((endTime - state.startTime) / 1000).toFixed(2),
+      computeTime: ((endTime - state.startTime) / 1000).toFixed(4),
     };
   }
 
@@ -48,8 +47,8 @@ const codeReducer = (state: codeState, action: codeAction): codeState => {
 
   if (action.type === "NEW_PROGRAM") {
     const code: string = `console.log("Hello world");`;
-    const output: string = "Hello world";
-    const computeTime: string = " 0.004531";
+    const output: string = "Click on RUN button to see the output";
+    const computeTime: string = "";
     return { ...state, code: code, output: output, computeTime: computeTime };
   }
 
