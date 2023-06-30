@@ -8,10 +8,7 @@ TS Compiler Hub is an online TypeScript compiler and playground built with React
 
 - Real-time TypeScript code compilation and execution in the browser.
 - Output panel to display the results of executed code.
-- Support for saving and loading TypeScript code snippets.
 - Responsive and user-friendly interface built with Material-UI (MUI) components.
-- Syntax highlighting for TypeScript code.
-- Error handling for compilation and runtime errors.
 - Dark mode support for better viewing experience.
 
 ## Demo
