@@ -13,11 +13,7 @@ const codeContext = createContext<codeContextProps | null>(null);
 
 const initialState: codeState = {
   code: `console.log("Hello world");`,
-  error: false,
-  errorMessage: "",
   output: "Click on RUN button to see the output",
-  computeTime: "",
-  startTime: 0.0,
   loading: false,
   mode: "dark",
 };

@@ -23,19 +23,24 @@ export default function ButtonAppBar() {
             size="large"
             edge="start"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{
+              mr: { xs: 0, sm: 2, md: 2, lg: 2 },
+              flexGrow: { xs: 1, sm: 0, md: 0, lg: 0 },
+            }}
           >
             <TerminalIcon sx={{ color: "#155fa0" }} />
           </IconButton>
           <Typography
             variant="h6"
             component="a"
+            href="/"
             sx={{
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 800,
               color: "#155fa0",
               textDecoration: "none",
+              display: { xs: "none", sm: "block", md: "block", lg: "block" },
             }}
           >
             TS compiler

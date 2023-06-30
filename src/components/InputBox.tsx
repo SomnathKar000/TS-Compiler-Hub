@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography, Tooltip, IconButton } from "@mui/material";
 import { useCodeContext } from "../contexts/code-context";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const InputBox = () => {
   const { code, codeChange } = useCodeContext();
   let textFieldRef = useRef<HTMLTextAreaElement>(null);
-  const [totalLines, setTotalLines] = useState(25);
+  const [totalLines, setTotalLines] = useState(1);
   const onChange = () => {
     if (textFieldRef.current) {
       codeChange(textFieldRef.current.value);
@@ -33,6 +34,19 @@ const InputBox = () => {
         height: "38rem",
         border: 1,
         cursor: "text",
+
+        borderWidth: 2,
+        borderRadius: 2,
+        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+        transition: "border-color 0.7s",
+
+        "&:hover": {
+          borderColor: "primary.light",
+        },
+
+        "&:active": {
+          borderColor: "primary.dark",
+        },
       }}
       onClick={() => {
         if (textFieldRef.current) {
@@ -92,6 +106,13 @@ const InputBox = () => {
           setTotalLines(lineCount!);
         }}
       />
+      <Box>
+        <Tooltip title="Copy Code">
+          <IconButton onClick={() => navigator.clipboard.writeText(code)}>
+            <ContentCopyIcon />
+          </IconButton>
+        </Tooltip>
+      </Box>
     </Box>
   );
 };
